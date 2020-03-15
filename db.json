@@ -1,0 +1,28 @@
+{
+  "posts": [
+    {
+      "id": 3,
+      "title": "Keep Calm",
+      "author": "Bogdan"
+    },
+    {
+      "title": "Make ToDo List",
+      "author": "Bogdan",
+      "id": 4
+    },
+    {
+      "title": "Learn Something",
+      "author": "Bogdan",
+      "id": 5
+    },
+    {
+      "title": "Watch Football PSG BVB",
+      "author": "Bogdan",
+      "id": 6
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
