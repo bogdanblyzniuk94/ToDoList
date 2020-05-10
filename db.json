@@ -1,24 +1,34 @@
 {
   "posts": [
     {
-      "id": 3,
       "title": "Keep Calm",
-      "author": "Bogdan"
+      "author": "Bogdan",
+      "isDone": false,
+      "id": 1
     },
     {
-      "title": "Make ToDo List",
+      "title": "Make Love, Not War",
       "author": "Bogdan",
+      "isDone": false,
+      "id": 2
+    },
+    {
+      "title": "Learn React",
+      "author": "Bogdan",
+      "isDone": false,
+      "id": 3
+    },
+    {
+      "title": "Watch Football",
+      "author": "Bogdan",
+      "isDone": false,
       "id": 4
     },
     {
-      "title": "Learn Something",
+      "title": "Repeat Learn React",
       "author": "Bogdan",
+      "isDone": false,
       "id": 5
-    },
-    {
-      "title": "Watch Football PSG BVB",
-      "author": "Bogdan",
-      "id": 6
     }
   ],
   "comments": [],

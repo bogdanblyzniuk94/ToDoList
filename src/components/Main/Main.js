@@ -1,19 +1,19 @@
 import React, { useState, useEffect} from 'react';
-import axios from 'axios';
+
 import AddToDoItem from '../AddToDoItem/AddToDoItem.js';
 import TodoList from '../TodoList/TodoList.js';
+import './main.css';
 
+import Api from '../../engine/api';
 
 function Main () {
 
   let [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/posts')
+    Api.getRequest()
     .then(function (response) {
-        const post = response.data;
-        setData(post);
-        console.log(post);
+        setData(response.data);
     })
     .catch(function (error) {
         console.log(error);
@@ -22,8 +22,10 @@ function Main () {
 
   return(
     <>
-      <AddToDoItem data={data} setData={setData} />
-      <TodoList data={data} setData={setData} />
+      <div className="main">
+        <AddToDoItem data={data} setData={setData} />
+        <TodoList data={data} setData={setData} />
+      </div>
     </>
   );
 }

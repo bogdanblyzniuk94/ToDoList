@@ -1,48 +1,66 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState, useRef, useEffect } from 'react';
+
+import './AddToDoItem.css'
+import Api from '../../engine/api';
+
+import { TextField, Button } from '@material-ui/core';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { red, green } from '@material-ui/core/colors';
+
 function AddToDoItem (props) {
     
+    const theme = createMuiTheme ({   
+        palette: {
+            primary: red,
+            secondary: green,
+        }
+    });
+
     const { setData } = props;
     let [postData, setPostData] = useState('');
+    const status = false;
+    const inputRef = useRef();
+    
+    useEffect(()=>{
+      inputRef.current.focus();
+    })
     
     const handleChange = function (ev) {
         const post = ev.target.value;
         setPostData(post);
-      }
+    }
     
     function handleSubmit (event) {
         event.preventDefault();
-    
-        axios.post(`http://localhost:3000/posts`, { 
-          title: postData,
-          author: 'Bogdan'
-         })
+        if(postData.replace(/\s/g,"") !== "" ) {
+          Api.postRequest( postData, status)
          .then(function () {
-          return axios.get('http://localhost:3000/posts')
+          return Api.getRequest();
         })
         .then(function (response) {
-          const post = response.data;
-          setData(post);
-          console.log(post);
+          setData(response.data);
         })
-        .catch(function (error) {
-          console.log(error);
-        })
+        
+        setPostData('');
+        inputRef.current.focus();
+        }
       }
 
     return(
         <>
-            <form onSubmit={handleSubmit}>
-                <input 
-                onChange = {handleChange}
-                type="text"
-                id="input" 
-                placeholder="What shall I do today?"
-                value={postData}
+          <MuiThemeProvider theme={theme}>
+          <form onSubmit={handleSubmit} className="addToDoItem">
+                <TextField  id="outlined-basic" 
+                            variant="outlined" 
+                            onChange = {handleChange}
+                            type="text"
+                            placeholder="What shall I do today?"
+                            value={postData}
+                            inputRef={inputRef}
                 />
-                <button>+</button>
+                <Button  variant="contained" color="secondary" onClick={handleSubmit}>ADD</Button>
             </form>
-            
+          </MuiThemeProvider> 
         </>
     );
 }

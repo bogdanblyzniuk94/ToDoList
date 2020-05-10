@@ -1,15 +1,13 @@
 import React from 'react';
 import './header.css';
+import { Typography } from '@material-ui/core';
 
 function Header(){
     return(
       <div className="header">
-        <div className="">
-          <span style={{color: "#3399FD"}}>React</span> ToDo List
-        </div>
-        <div>
-          Click on task to toogle complete
-        </div>
+        <Typography variant="h1" style={{ fontFamily: "Monoton" }}>
+           ToDo List
+        </Typography>
       </div>
     );
   };
