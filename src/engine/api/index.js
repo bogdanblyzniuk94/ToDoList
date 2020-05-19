@@ -3,7 +3,7 @@ import axios from 'axios';
 class Api {
     
     constructor() {
-        this.http = axios.create({ baseURL: 'http://localhost:3000' });
+        this.http = axios.create({ baseURL: 'http://localhost:4000' });
     }
 
     static getInstance() {
